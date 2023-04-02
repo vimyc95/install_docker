@@ -1,11 +1,13 @@
-sh docker.sh
-sh nvidia-container-runtime-script.sh
+read -p "Please input password: " password 
 
-sudo apt-get install -y nvidia-container-runtime
-sudo service docker restart
+sh docker.sh ${password}
+sh nvidia-container-runtime-script.sh ${password}
+
+echo ${password}|sudo -S apt-get install -y nvidia-container-runtime
+echo ${password}|sudo -S service docker restart
 
 #use docker without sudo
-sudo groupadd docker
-sudo usermod -aG docker $USER
+echo ${password}|sudo -S groupadd docker
+echo ${password}|sudo -S usermod -aG docker $USER
 newgrp docker
-sudo systemctl restart docker
+echo ${password}|sudo -S systemctl restart docker
