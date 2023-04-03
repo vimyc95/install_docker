@@ -1,3 +1,3 @@
-# install_docker
+# Script for install docker
 
-sh install.sh
+  sh install.sh
